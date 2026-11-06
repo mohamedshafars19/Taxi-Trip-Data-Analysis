@@ -1,0 +1,11 @@
+# Core Data Science & Numerical Computing
+numpy>=1.25.0
+pandas>=2.0.0
+scipy>=1.10.0
+
+# Machine Learning & Modeling
+scikit-learn>=1.3.0
+
+# Visualization & Aesthetics
+matplotlib>=3.7.0
+seaborn>=0.12.0

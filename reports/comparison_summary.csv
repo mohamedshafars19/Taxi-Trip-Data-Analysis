@@ -1,0 +1,19 @@
+dimension,payment_method,trip_count,avg_fare,median_fare,avg_tip,avg_tip_pct,total_revenue,trip_share_pct,revenue_share_pct,distance_category,avg_distance,avg_fare_per_mile,rate_code_name,index,Component,Total_Amount,Share_Pct
+payment_method,Cash,937.0,14.12,10.5,0.0,0.0,14670.92,23.9,20.16,,,,,,,,
+payment_method,Credit Card,2956.0,14.75,11.5,3.01,21.59,57511.5,75.39,79.02,,,,,,,,
+payment_method,Dispute,9.0,15.28,8.0,0.0,0.0,149.2,0.23,0.21,,,,,,,,
+payment_method,No Charge,19.0,22.24,18.0,0.0,0.0,445.7,0.48,0.61,,,,,,,,
+distance_category,,1556.0,6.73,6.5,,,14281.32,39.68,19.62,Short (< 2 mi),1.2,8.09,,,,,
+distance_category,,1756.0,14.75,14.0,,,32370.42,44.78,44.48,Medium (2 - 7 mi),3.78,4.02,,,,,
+distance_category,,609.0,34.54,31.0,,,26125.58,15.53,35.9,Long (> 7 mi),11.41,3.08,,,,,
+rate_code,,58.0,52.0,52.0,8.03,,3764.5,1.48,5.17,,17.37,,JFK Airport,,,,
+rate_code,,3.0,78.33,71.5,3.38,,260.57,0.08,0.36,,21.46,,Nassau / Westchester,,,,
+rate_code,,10.0,54.05,50.0,5.62,,629.42,0.26,0.86,,8.41,,Negotiated Fare,,,,
+rate_code,,1.0,64.5,64.5,8.0,,90.8,0.03,0.12,,16.8,,Newark Airport,,,,
+rate_code,,3849.0,13.91,11.0,2.17,,68032.03,98.16,93.48,,3.71,,Standard Rate,,,,
+revenue_components,,,,,,,,,,,,,,0.0,Base Fare,57405.0,78.88
+revenue_components,,,,,,,,,,,,,,1.0,Tips,8898.76,12.23
+revenue_components,,,,,,,,,,,,,,2.0,Extra Surcharges,1927.5,2.65
+revenue_components,,,,,,,,,,,,,,3.0,MTA Tax,1956.5,2.69
+revenue_components,,,,,,,,,,,,,,4.0,Tolls,1413.26,1.94
+revenue_components,,,,,,,,,,,,,,5.0,Improvement Surcharge,1176.3,1.62

@@ -1,0 +1,6 @@
+model_name,train_mae,test_mae,test_mse,test_rmse,train_r2,test_r2
+KNN Regressor (k=3),0.76,1.223,5.558,2.358,0.9881,0.9478
+Random Forest Regressor,0.905,1.147,6.099,2.47,0.9837,0.9427
+Decision Tree Regressor,0.965,1.17,6.78,2.604,0.9842,0.9363
+Linear Regression,1.217,1.293,10.336,3.215,0.9614,0.9029
+Dummy Regressor,7.973,7.526,106.473,10.319,0.0,-0.0006

@@ -1,0 +1,69 @@
+================================================================================
+🛡️ NYC TAXI DATASET AUDIT & DATA QUALITY REPORT
+================================================================================
+INGESTION STATUS: SUCCESS
+SOURCE PATH:      taxi_data_2018.csv
+SYNTHETIC TAG:    False
+INITIAL RECORDS:  5,000
+CLEANED RECORDS:  3,921
+RETENTION RATE:   78.42%
+================================================================================
+
+1. SCHEMA & MISSING VALUE AUDIT
+--------------------------------------------------------------------------------
+Duplicate Records Detected: 1040
+
+Column Null Counts & Imputation:
+  • trip_distance            : 0 nulls
+  • rate_code                : 0 nulls
+  • store_and_fwd_flag       : 0 nulls
+  • payment_type             : 0 nulls
+  • fare_amount              : 0 nulls
+  • extra                    : 0 nulls
+  • mta_tax                  : 0 nulls
+  • tip_amount               : 0 nulls
+  • tolls_amount             : 0 nulls
+  • improvement_surcharge    : 0 nulls
+  • total_amount             : 0 nulls
+
+2. REMOVED OPERATIONAL ANOMALIES (CLEANING RULES)
+--------------------------------------------------------------------------------
+  • zero_or_negative_distance          : 34 records removed
+  • sub_minimum_fare_reversals         : 7 records removed
+  • negative_tips                      : 0 records removed
+
+3. OUTLIER ANALYSIS (IQR METHOD: 1.5 * IQR)
+--------------------------------------------------------------------------------
+Note: Statistical outliers were analyzed but NOT indiscriminately purged.
+Legitimate long-distance journeys and flat-rate airport trips exceed IQR upper
+bounds while representing valid, high-value commercial transactions.
+
+Metric: [TRIP_DISTANCE]
+  • 25th Percentile (Q1):    1.37
+  • 50th Percentile (Median):2.58
+  • 75th Percentile (Q3):    4.9
+  • Interquartile Range (IQR):3.53
+  • Upper Bound (Q3+1.5*IQR): 10.2
+  • Statistical Outliers:    294 (7.42% of dataset)
+
+Metric: [FARE_AMOUNT]
+  • 25th Percentile (Q1):    7.5
+  • 50th Percentile (Median):11.0
+  • 75th Percentile (Q3):    18.5
+  • Interquartile Range (IQR):11.0
+  • Upper Bound (Q3+1.5*IQR): 35.0
+  • Statistical Outliers:    227 (5.73% of dataset)
+
+Metric: [TIP_AMOUNT]
+  • 25th Percentile (Q1):    0.0
+  • 50th Percentile (Median):1.85
+  • 75th Percentile (Q3):    3.15
+  • Interquartile Range (IQR):3.15
+  • Upper Bound (Q3+1.5*IQR): 7.88
+  • Statistical Outliers:    156 (3.94% of dataset)
+
+4. AUDIT VERDICT
+--------------------------------------------------------------------------------
+Data hygiene validation passed successfully with 78.42% retention.
+All calculations protected against division-by-zero and missing numerical fields.
+================================================================================

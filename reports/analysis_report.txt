@@ -1,0 +1,89 @@
+================================================================================
+🚕 NYC YELLOW TAXI TRIP DATA SCIENCE EXECUTIVE ANALYSIS REPORT
+================================================================================
+DATA PROVENANCE: GENUINE NYC TLC 2018 TRIP RECORDS
+SOURCE FILE: taxi_data_2018.csv
+PROCESSED RECORDS: 3,921 trips
+GROSS RECORDED REVENUE: $72,777.32
+================================================================================
+
+1. EXECUTIVE KEY PERFORMANCE INDICATORS (KPIs)
+--------------------------------------------------------------------------------
+• Total Trips Analyzed:            3,921
+• Total Gross Revenue:             $72,777.32
+• Total Metered Fares:             $57,405.00
+• Total Recorded Gratuities:       $8,898.76
+• Average Metered Fare:            $14.64 (Median: $11.00)
+• Average Trip Distance:           3.94 miles (Median: 2.60 miles)
+• Highest Single Fare Recorded:    $114.00
+• Highest Single Tip Recorded:     $25.00
+• Most Common Payment Channel:     Credit Card (75.4% share)
+• Credit Card Average Tip:         $3.01 (Avg: 21.6%, Median: 22.0%)
+
+2. COMPARATIVE ANALYSIS: PAYMENT METHOD BREAKDOWN
+--------------------------------------------------------------------------------
+                trip_count  avg_fare  median_fare  avg_tip  avg_tip_pct  total_revenue  trip_share_pct  revenue_share_pct
+payment_method                                                                                                           
+Cash                   937     14.12         10.5     0.00         0.00       14670.92           23.90              20.16
+Credit Card           2956     14.75         11.5     3.01        21.59       57511.50           75.39              79.02
+Dispute                  9     15.28          8.0     0.00         0.00         149.20            0.23               0.21
+No Charge               19     22.24         18.0     0.00         0.00         445.70            0.48               0.61
+
+KEY OBSERVATION:
+Electronic payment (Credit Card) accounts for 75.4% of transactions and the vast
+majority of revenue. In NYC TLC metered records, gratuities are digitally captured
+ONLY for credit card transactions. Cash tips are paid directly to drivers and are
+recorded as $0.00, creating an apparent gratuity divergence in official data.
+
+3. COMPARATIVE ANALYSIS: DISTANCE CATEGORIES
+--------------------------------------------------------------------------------
+                   trip_count  avg_distance  avg_fare  median_fare  avg_fare_per_mile  total_revenue  trip_share_pct  revenue_share_pct
+distance_category                                                                                                                      
+Short (< 2 mi)           1556          1.20      6.73          6.5               8.09       14281.32           39.68              19.62
+Medium (2 - 7 mi)        1756          3.78     14.75         14.0               4.02       32370.42           44.78              44.48
+Long (> 7 mi)             609         11.41     34.54         31.0               3.08       26125.58           15.53              35.90
+
+KEY OBSERVATION:
+• Short trips (< 2.0 mi) account for the largest volume of city transit.
+• Unit revenue economics: Short trips generate the highest revenue per mile ($/mi)
+  because the fixed base flag-drop ($2.50) and surcharges are amortized over fewer miles.
+• Long trips (> 7.0 mi) contribute substantial individual ticket value and airport travel.
+
+4. COMPARATIVE ANALYSIS: RATE CODE ECONOMICS
+--------------------------------------------------------------------------------
+                      trip_count  avg_distance  avg_fare  median_fare  avg_tip  total_revenue  trip_share_pct  revenue_share_pct
+rate_code_name                                                                                                                  
+JFK Airport                   58         17.37     52.00         52.0     8.03        3764.50            1.48               5.17
+Nassau / Westchester           3         21.46     78.33         71.5     3.38         260.57            0.08               0.36
+Negotiated Fare               10          8.41     54.05         50.0     5.62         629.42            0.26               0.86
+Newark Airport                 1         16.80     64.50         64.5     8.00          90.80            0.03               0.12
+Standard Rate               3849          3.71     13.91         11.0     2.17       68032.03           98.16              93.48
+
+KEY OBSERVATION:
+• Rate Code 1 (Standard Rate) represents the overwhelming volume of city transit.
+• Rate Code 2 (JFK Airport) features a regulated flat fare of $52.00, resulting in
+  exceptionally stable pricing independent of metered traffic delays.
+• Out-of-city rate codes (Newark, Nassau/Westchester) command 3x to 6x standard fares.
+
+5. REVENUE STREAM COMPOSITION
+--------------------------------------------------------------------------------
+            Component  Total_Amount  Share_Pct
+            Base Fare      57405.00      78.88
+                 Tips       8898.76      12.23
+     Extra Surcharges       1927.50       2.65
+              MTA Tax       1956.50       2.69
+                Tolls       1413.26       1.94
+Improvement Surcharge       1176.30       1.62
+
+6. BUSINESS & OPERATIONAL TAKEAWAYS
+--------------------------------------------------------------------------------
+1. Cashless Modernization: Over 75% of passengers use electronic cards, accelerating
+   transaction velocity and creating auditable gratuity tracking.
+2. Flag-Drop Pricing Power: Taxi unit economics heavily favor high-density short
+   trips in Manhattan where $/mile is maximized.
+3. Airport Corridors: Airport trips represent high-margin corridors with predictable
+   flat-rate structures and above-average gratuities.
+
+================================================================================
+Generated by NYC Yellow Taxi Analytics Pipeline • 300 DPI Publication Suite
+================================================================================

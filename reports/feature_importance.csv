@@ -1,0 +1,9 @@
+feature,rf_importance,dt_importance,avg_importance
+trip_distance,0.9592,0.9651,0.9622
+rate_code_5,0.0083,0.0153,0.0118
+rate_code_2,0.0036,0.0115,0.0076
+rate_code_1,0.0119,0.0023,0.0071
+extra,0.0062,0.0041,0.0052
+tolls_amount,0.0075,0.0007,0.0041
+rate_code_4,0.0031,0.001,0.002
+rate_code_3,0.0002,0.0,0.0001
