@@ -432,7 +432,7 @@ if nav_selection == "🚖 Dashboard Overview":
             showlegend=False,
             paper_bgcolor="rgba(0,0,0,0)",
         )
-        st.plotly_chart(fig_rev, use_container_width=True)
+        st.plotly_chart(fig_rev, width="stretch")
         st.markdown("</div>", unsafe_allow_html=True)
 
     with col_right:
@@ -467,7 +467,7 @@ if nav_selection == "🚖 Dashboard Overview":
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
         )
-        st.plotly_chart(fig_dist, use_container_width=True)
+        st.plotly_chart(fig_dist, width="stretch")
         st.markdown("</div>", unsafe_allow_html=True)
 
     # Interactive Dataset Explorer & Audit Summary
@@ -495,7 +495,7 @@ if nav_selection == "🚖 Dashboard Overview":
     ]
     st.dataframe(
         df_main[sample_cols].head(200),
-        use_container_width=True,
+        width="stretch",
         height=280,
     )
 
@@ -650,7 +650,7 @@ elif nav_selection == "📊 Exploratory Data Analysis":
                     yaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
                     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                 )
-                st.plotly_chart(fig_scatter, use_container_width=True)
+                st.plotly_chart(fig_scatter, width="stretch")
                 st.caption("Scatter plot with Ordinary Least Squares (OLS) trendline demonstrating strong linear proportionality for standard metered fares.")
                 st.markdown("</div>", unsafe_allow_html=True)
 
@@ -682,7 +682,7 @@ elif nav_selection == "📊 Exploratory Data Analysis":
                     xaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
                     yaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
                 )
-                st.plotly_chart(fig_hist, use_container_width=True)
+                st.plotly_chart(fig_hist, width="stretch")
                 st.caption("Right-skewed log-normal distribution showing predominance of short core Manhattan trips (< 2 miles).")
                 st.markdown("</div>", unsafe_allow_html=True)
 
@@ -714,7 +714,7 @@ elif nav_selection == "📊 Exploratory Data Analysis":
                     showlegend=False,
                     paper_bgcolor="rgba(0,0,0,0)",
                 )
-                st.plotly_chart(fig_pm, use_container_width=True)
+                st.plotly_chart(fig_pm, width="stretch")
                 st.caption("Credit Card accounts for over 71% of rides and generates ~80% of metered revenue.")
                 st.markdown("</div>", unsafe_allow_html=True)
 
@@ -743,7 +743,7 @@ elif nav_selection == "📊 Exploratory Data Analysis":
                     yaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
                     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                 )
-                st.plotly_chart(fig_tip_scatter, use_container_width=True)
+                st.plotly_chart(fig_tip_scatter, width="stretch")
                 st.caption("NYC TLC note: Cash tips are paid directly to drivers and recorded as $0.00 in electronic taximeter telemetry.")
                 st.markdown("</div>", unsafe_allow_html=True)
 
@@ -781,7 +781,7 @@ elif nav_selection == "📊 Exploratory Data Analysis":
                     plot_bgcolor="rgba(0,0,0,0)",
                     yaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
                 )
-                st.plotly_chart(fig_rc, use_container_width=True)
+                st.plotly_chart(fig_rc, width="stretch")
                 st.caption("Special airport rates (JFK Flat Rate: $52.00, Newark) command significantly higher average ticket size.")
                 st.markdown("</div>", unsafe_allow_html=True)
 
@@ -816,7 +816,7 @@ elif nav_selection == "📊 Exploratory Data Analysis":
                     plot_bgcolor="rgba(0,0,0,0)",
                     yaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
                 )
-                st.plotly_chart(fig_dc, use_container_width=True)
+                st.plotly_chart(fig_dc, width="stretch")
                 st.caption("Medium (2-7 mi) and long-haul trips generate disproportionately large shares of total operator revenue.")
                 st.markdown("</div>", unsafe_allow_html=True)
 
@@ -853,7 +853,7 @@ elif nav_selection == "📊 Exploratory Data Analysis":
                 margin=dict(t=20, b=20, l=20, r=20),
                 paper_bgcolor="rgba(0,0,0,0)",
             )
-            st.plotly_chart(fig_corr, use_container_width=True)
+            st.plotly_chart(fig_corr, width="stretch")
             st.caption("Trip distance and fare amount exhibit near-linear correlation (r = 0.945), confirming distance as the dominant pricing predictor.")
             st.markdown("</div>", unsafe_allow_html=True)
 
@@ -866,7 +866,7 @@ elif nav_selection == "📊 Exploratory Data Analysis":
                 img_cols = st.columns(2)
                 for idx, vfile in enumerate(vis_files):
                     with img_cols[idx % 2]:
-                        st.image(str(vfile), caption=vfile.stem.replace("_", " ").title(), use_container_width=True)
+                        st.image(str(vfile), caption=vfile.stem.replace("_", " ").title(), width="stretch")
             else:
                 st.info("No generated PNG images found in visualizations directory.")
         else:
@@ -1056,7 +1056,7 @@ elif nav_selection == "🎯 Fare Prediction (Live ML)":
                     "Actual Metered Fare ($)": f"${actual_y:.2f}",
                 })
             nn_df = pd.DataFrame(nn_records)
-            st.dataframe(nn_df, use_container_width=True, hide_index=True)
+            st.dataframe(nn_df, width="stretch", hide_index=True)
             st.caption("Distance-weighting assigns inverse-proportional weights to closer training examples, capturing non-linear local fare jumps.")
     except Exception as e:
         st.info(f"Nearest neighbor telemetry unavailable: {e}")
@@ -1113,7 +1113,7 @@ elif nav_selection == "📈 Regression Model Comparison":
             xaxis=dict(showgrid=False, tickangle=-25),
             yaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
         )
-        st.plotly_chart(fig_rmse, use_container_width=True)
+        st.plotly_chart(fig_rmse, width="stretch")
         st.markdown("</div>", unsafe_allow_html=True)
 
     with c_m2:
@@ -1143,7 +1143,7 @@ elif nav_selection == "📈 Regression Model Comparison":
             xaxis=dict(showgrid=False, tickangle=-25),
             yaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
         )
-        st.plotly_chart(fig_mae, use_container_width=True)
+        st.plotly_chart(fig_mae, width="stretch")
         st.markdown("</div>", unsafe_allow_html=True)
 
     with c_m3:
@@ -1173,7 +1173,7 @@ elif nav_selection == "📈 Regression Model Comparison":
             xaxis=dict(showgrid=False, tickangle=-25),
             yaxis=dict(showgrid=True, gridcolor="#E2E8F0", range=[0.0, 1.05]),
         )
-        st.plotly_chart(fig_r2, use_container_width=True)
+        st.plotly_chart(fig_r2, width="stretch")
         st.markdown("</div>", unsafe_allow_html=True)
 
     # Full Evaluation Table
@@ -1201,7 +1201,7 @@ elif nav_selection == "📈 Regression Model Comparison":
         models_display.style.highlight_min(subset=["Test RMSE ($)", "Test MAE ($)"], color="#DCFCE7")
         .highlight_max(subset=["Test R²"], color="#DCFCE7")
         .format({"Train MAE ($)": "${:.2f}", "Test MAE ($)": "${:.2f}", "Test MSE ($²)": "{:.2f}", "Test RMSE ($)": "${:.2f}", "Train R²": "{:.4f}", "Test R²": "{:.4f}", "Overfitting Gap (Δ R²)": "{:.4f}"}),
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
     st.markdown("</div>", unsafe_allow_html=True)
@@ -1323,7 +1323,7 @@ elif nav_selection == "🔬 K-Means Trip Segmentation":
             ),
             paper_bgcolor="rgba(0,0,0,0)",
         )
-        st.plotly_chart(fig_3d, use_container_width=True)
+        st.plotly_chart(fig_3d, width="stretch")
         st.markdown("</div>", unsafe_allow_html=True)
 
     with clust_tab2:
@@ -1351,7 +1351,7 @@ elif nav_selection == "🔬 K-Means Trip Segmentation":
             xaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
             yaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
         )
-        st.plotly_chart(fig_2d, use_container_width=True)
+        st.plotly_chart(fig_2d, width="stretch")
         st.markdown("</div>", unsafe_allow_html=True)
 
     with clust_tab3:
@@ -1383,7 +1383,7 @@ elif nav_selection == "🔬 K-Means Trip Segmentation":
                 xaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
                 yaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
             )
-            st.plotly_chart(fig_elbow, use_container_width=True)
+            st.plotly_chart(fig_elbow, width="stretch")
             st.markdown("</div>", unsafe_allow_html=True)
 
         with row_ev2:
@@ -1413,7 +1413,7 @@ elif nav_selection == "🔬 K-Means Trip Segmentation":
                 xaxis=dict(showgrid=False),
                 yaxis=dict(showgrid=True, gridcolor="#E2E8F0", range=[0.0, 0.8]),
             )
-            st.plotly_chart(fig_sil, use_container_width=True)
+            st.plotly_chart(fig_sil, width="stretch")
             st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -1465,7 +1465,7 @@ elif nav_selection == "💡 ML Diagnostics & Explainability":
             xaxis=dict(showgrid=True, gridcolor="#E2E8F0", range=[0, 1.15]),
             yaxis=dict(autorange="reversed"),
         )
-        st.plotly_chart(fig_fi, use_container_width=True)
+        st.plotly_chart(fig_fi, width="stretch")
         st.markdown("</div>", unsafe_allow_html=True)
 
     with fi_col2:
@@ -1527,7 +1527,7 @@ elif nav_selection == "💡 ML Diagnostics & Explainability":
             xaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
             yaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
         )
-        st.plotly_chart(fig_avp, use_container_width=True)
+        st.plotly_chart(fig_avp, width="stretch")
         st.caption("Points tightly hugging the red identity line confirm strong predictive fidelity across standard fares.")
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -1555,7 +1555,7 @@ elif nav_selection == "💡 ML Diagnostics & Explainability":
             xaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
             yaxis=dict(showgrid=True, gridcolor="#E2E8F0"),
         )
-        st.plotly_chart(fig_res, use_container_width=True)
+        st.plotly_chart(fig_res, width="stretch")
         st.caption("Symmetric zero-centered error distribution verifying homoscedasticity across the test set.")
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -1659,3 +1659,4 @@ elif nav_selection == "📥 Reports & Data Export":
                 st.code(f.read(), language="text")
         else:
             st.info("Selected report file is not available.")
+
