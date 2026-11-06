@@ -656,6 +656,7 @@ class FareRegressionSuite:
         self.models: Dict[str, Pipeline] = {}
         self.results_df: Optional[pd.DataFrame] = None
         self.feature_importance_df: Optional[pd.DataFrame] = None
+        self.train_data: Optional[Tuple[pd.DataFrame, pd.Series]] = None
         self.test_data: Optional[Tuple[pd.DataFrame, pd.Series]] = None
         self.predictions: Dict[str, np.ndarray] = {}
 
@@ -671,6 +672,7 @@ class FareRegressionSuite:
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=0.20, random_state=self.config.random_seed
         )
+        self.train_data = (X_train, y_train)
         self.test_data = (X_test, y_test)
         logger.info("ℹ️ Train set size: %d | Test set size: %d", len(X_train), len(X_test))
 

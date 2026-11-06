@@ -7,6 +7,9 @@ python taxi_analysis.py %*
 if errorlevel 1 (
     echo.
     echo Trying fallback Python executable in AppData...
-    "%LOCALAPPDATA%\Python\pythoncore-3.14-64\python.exe" taxi_analysis.py %*
+    "%LOCALAPPDATA%\Python\bin\python.exe" taxi_analysis.py %*
+    if errorlevel 1 (
+        "%LOCALAPPDATA%\Python\pythoncore-3.14-64\python.exe" taxi_analysis.py %*
+    )
 )
 pause

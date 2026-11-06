@@ -1,15 +1,17 @@
 # 🚕 NYC Yellow Taxi Trip Data Analysis & Machine Learning
 
 [![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Web%20App-Streamlit-FF4B4B.svg?logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![Plotly](https://img.shields.io/badge/Interactive-Plotly-3F4F75.svg?logo=plotly&logoColor=white)](https://plotly.com/)
 [![Scikit-Learn](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-F7931E.svg?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code Style: PEP 8](https://img.shields.io/badge/Code%20Style-PEP%208-green.svg)](https://peps.python.org/pep-0008/)
 [![Visualizations: 300 DPI](https://img.shields.io/badge/Visualizations-19%20HD%20Dashboards-purple.svg)](visualizations/)
 [![Data Source](https://img.shields.io/badge/Data%20Source-NYC%20TLC%20OpenData-orange.svg)](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
-An enterprise-grade Python Data Science and Machine Learning project analyzing **New York City Taxi and Limousine Commission (TLC)** Yellow Taxi trip records.
+An enterprise-grade Python Data Science, Machine Learning, and Interactive Web Analytics platform analyzing **New York City Taxi and Limousine Commission (TLC)** Yellow Taxi trip records.
 
-This project combines deep **Exploratory Data Analysis (EDA)**, **Comparative Behavioral Analytics**, **Supervised Regression Modeling (KNN, Random Forest, Decision Tree, Linear Regression, Dummy Baseline)**, **Unsupervised K-Means Clustering**, and **Feature Importance Analytics**, generating **19 publication-ready 300-DPI visual dashboards** and automated evaluation reports.
+This project combines deep **Exploratory Data Analysis (EDA)**, **Comparative Behavioral Analytics**, **Supervised Regression Modeling (KNN, Random Forest, Decision Tree, Linear Regression, Dummy Baseline)**, **Unsupervised K-Means Clustering**, **Feature Importance Diagnostics**, **19 publication-ready 300-DPI visual dashboards**, and a **Live Interactive Streamlit Web Application (`app.py`)**.
 
 ---
 
@@ -58,12 +60,13 @@ Evaluated using the **Elbow Method (Inertia)** and **Silhouette Coefficient Anal
 ## 🛠️ Technology Stack
 
 - **Programming Language**: Python 3.10+ (Tested on Python 3.14)
+- **Interactive Web Application**: [Streamlit](https://streamlit.io/) (`streamlit>=1.30.0`), [Plotly](https://plotly.com/) (`plotly>=5.18.0`)
 - **Machine Learning**: [Scikit-Learn](https://scikit-learn.org/) (`scikit-learn>=1.3.0`)
   - `KNeighborsRegressor`, `RandomForestRegressor`, `DecisionTreeRegressor`, `LinearRegression`, `DummyRegressor`
   - `KMeans`, `StandardScaler`, `OneHotEncoder`, `ColumnTransformer`, `Pipeline`, `GridSearchCV`
 - **Data Manipulation**: [Pandas](https://pandas.pydata.org/) (`pandas>=2.0.0`), [NumPy](https://numpy.org/) (`numpy>=1.25.0`)
 - **Scientific Computing**: [SciPy](https://scipy.org/) (`scipy>=1.10.0`)
-- **Data Visualization**: [Matplotlib](https://matplotlib.org/) (`matplotlib>=3.7.0`), [Seaborn](https://seaborn.pydata.org/) (`seaborn>=0.12.0`)
+- **Data Visualization**: [Plotly Express](https://plotly.com/python/), [Matplotlib](https://matplotlib.org/) (`matplotlib>=3.7.0`), [Seaborn](https://seaborn.pydata.org/) (`seaborn>=0.12.0`)
 
 ---
 
@@ -72,12 +75,14 @@ Evaluated using the **Elbow Method (Inertia)** and **Silhouette Coefficient Anal
 ```text
 Taxi-Trip-Data-Analysis/
 │
+├── app.py                     # [LIVE DEMO] Interactive Streamlit Web Application
+├── run_app.bat                # One-click Windows launcher for Streamlit Web App
 ├── taxi_analysis.py          # Unified pipeline (EDA, Feature Engineering, ML Suite, Visuals, Reports)
 ├── taxi_data_2018.csv         # Verified NYC TLC 2018 Yellow Taxi trip dataset
 ├── requirements.txt           # Python dependency specifications
 ├── README.md                  # Comprehensive portfolio documentation & visual gallery
 ├── .gitignore                 # Standard Python, OS, and virtualenv exclusions
-├── run_analysis.bat           # One-click Windows batch runner
+├── run_analysis.bat           # One-click Windows batch runner for CLI pipeline
 │
 ├── visualizations/            # 19 Publication-Grade 300-DPI Dashboards
 │   ├── 01_revenue_breakdown.png
@@ -296,12 +301,22 @@ Executes end-to-end data cleaning, feature engineering, regression modeling, clu
 python taxi_analysis.py
 ```
 
-### 4. Windows One-Click Execution
+### 4. Launch the Interactive Web Application (Streamlit)
+Launch the interactive web application featuring live fare prediction, dynamic exploratory data filtering, regression model comparisons, 3D cluster exploration, and downloadable reports:
+```bash
+streamlit run app.py
+```
+Or on Windows, simply double-click:
+```cmd
+run_app.bat
+```
+
+### 5. Windows CLI One-Click Execution
 ```cmd
 run_analysis.bat
 ```
 
-### 5. Advanced CLI Options
+### 6. Advanced CLI Options
 ```bash
 # Run with custom dataset and custom output directory
 python taxi_analysis.py --data taxi_data_2018.csv --output-dir . --dpi 300
@@ -312,6 +327,29 @@ python taxi_analysis.py --data tests/corrupted_sample_original.csv --no-demo
 
 ---
 
+## 🌐 Interactive Streamlit Web Application (`app.py`)
+
+The repository features an enterprise-grade, modern light-theme web dashboard built with **Streamlit** and **Plotly**, converting the offline analytics pipeline into an interactive data product:
+
+| Section | Key Interactive Features |
+| :--- | :--- |
+| **🚖 Dashboard Overview** | Executive KPI metric cards, data audit retention stats, interactive dataset explorer, and high-level distribution summaries. |
+| **📊 Exploratory Data Analysis** | Dynamic range sliders (Fare, Distance), payment type and rate code multiselects, real-time sample recalculated KPIs, and interactive Plotly charts. |
+| **🎯 Fare Prediction (Live ML)** | Real-time taxi fare calculator using the trained **KNN Regressor Pipeline ($k=3$)**, cost breakdown (metered fare, tolls, surcharges, 20% tip), and a **Nearest Neighbors Explainability Inspector** showing the closest historical trips from the training set. |
+| **📈 Model Comparison Studio** | Interactive RMSE, MAE, and R² score comparison charts across all 5 models (Dummy, KNN, Linear Regression, Decision Tree, Random Forest) with overfitting gap diagnostics. |
+| **🔬 K-Means Segmentation** | Interactive 3D and 2D scatter plots of transit archetypes, cluster profile cards, and Elbow / Silhouette validation curves. |
+| **💡 ML Diagnostics** | Tree-based feature importance attribution (Gini importance), causality vs. statistical correlation analysis, actual vs. predicted parity scatter, and residual distribution checks. |
+| **📥 Reports & Data Export** | One-click downloads for the cleaned & feature-engineered dataset (`taxi_data_2018_cleaned_features.csv`) and all 7 generated CSV and TXT reports with in-app text viewers. |
+
+### Deploying to Streamlit Community Cloud (Free Hosting)
+You can deploy this application directly to **Streamlit Community Cloud** in 2 minutes:
+1. Fork or push this repository to your GitHub account (`mohamedshafars19/Taxi-Trip-Data-Analysis`).
+2. Visit [share.streamlit.io](https://share.streamlit.io/) and connect your GitHub account.
+3. Select your repository: `mohamedshafars19/Taxi-Trip-Data-Analysis`, branch: `main`, and main file path: `app.py`.
+4. Click **Deploy!** Streamlit will automatically install dependencies from `requirements.txt` and launch your live public web application.
+
+---
+
 ## 🧪 Robustness, Verification & Quality Assurance
 
 - **Zero Data Leakage**: Feature scalers and encoders are fitted solely on training folds via Scikit-Learn `Pipeline` architectures.
@@ -319,6 +357,7 @@ python taxi_analysis.py --data tests/corrupted_sample_original.csv --no-demo
 - **Corrupted Input Detection**: Proactively detects HTML markup in CSV files (such as incomplete Kaggle downloads) and raises informative exceptions.
 - **Zero Division Immunity**: Derived unit economics (`fare_per_mile`, `tip_percentage`) use zero-safe masking.
 - **Headless Server Execution**: Configured with Matplotlib's `Agg` backend to run seamlessly in headless CI/CD environments and terminal sessions without hanging on GUI popups.
+- **App Performance Optimization**: Heavy dataset transformation and model fitting are cached via `@st.cache_data` and `@st.cache_resource`, ensuring instantaneous page responsiveness.
 
 ---
 
@@ -327,7 +366,7 @@ python taxi_analysis.py --data tests/corrupted_sample_original.csv --no-demo
 1. **Temporal Engineering**: Incorporate pickup/dropoff datetime features to model rush-hour congestion surcharges, night-shift driver wages, and seasonal trends.
 2. **Geospatial Zone Embeddings**: Integrate NYC TLC Taxi Zone shapefiles (GeoPandas) with Graph Neural Networks (GNNs) or spatial clustering (DBSCAN / HDBSCAN) to map pickup hotspots.
 3. **Gradient Boosting Ensembles**: Train XGBoost, LightGBM, and CatBoost regressors with Bayesian Hyperparameter Optimization (Optuna) for marginal residual gains.
-4. **Interactive Dashboard**: Build a Streamlit or Dash web application allowing users to input pickup coordinates and receive real-time KNN fare estimations.
+4. **Interactive Dashboard**: ✅ Completed! Full-featured interactive Streamlit web application (`app.py`) with live KNN fare prediction, Plotly charts, and report exports.
 
 ---
 
